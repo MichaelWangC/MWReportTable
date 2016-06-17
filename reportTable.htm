@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!-- saved from url=(0168)https://landray.dingtalkapps.com/alid/app/report/summary.html?dd_orientation=landscape&corpid=ding832c343f4b1a9ae4&showmenu=false&dd_share=false&dd_nav_bgcolor=FF9A89B9 -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>日志报表</title>
+    <link rel="stylesheet" type="text/css" href="report.css">
+</head>
+
+<body class="nocopy">
+    <div class="player"></div>
+    <div class="wrap warp2">
+        <div class="report_table_box">
+            <div class="r_table_list" id="tablelist">
+                <div class="r_table_fix" id="wrapper"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>
+    <script src="jquery-1.8.0.min.js"></script>
+    <script src="comm.js"></script>
+    <script>
+    var e = {
+        "reports": [{
+            "body": {
+                "2": "ok了解",
+                "1": "收购百度收购百度收购百度收购百度收购百度收购百度收购百度",
+                "0": "开会"
+            },
+            "main": {
+                "createTime": "06月02日&nbsp;10:08",
+                "name": "张三",
+                "reportid": "1550edeadd32078ae3ad548410292c62"
+            }
+        }, {
+            "body": {
+                "2": "",
+                "1": "静静",
+                "0": "拜访"
+            },
+            "main": {
+                "createTime": "06月02日&nbsp;10:07",
+                "name": "王五",
+                "reportid": "1550edd809ba98a716971a84c8e8d2e4"
+            }
+        }],
+        "columns": [{
+            "sort": "-2",
+            "column": "填报人",
+            "type": 1
+        }, {
+            "sort": "-1",
+            "column": "填报时间",
+            "type": 1
+        }, {
+            "sort": 0,
+            "column": "今日完成工作",
+            "type": 1,
+            "dataValue": ""
+        }, {
+            "sort": 1,
+            "column": "未完成工作",
+            "type": 1,
+            "dataValue": ""
+        }, {
+            "sort": 2,
+            "column": "需协调工作",
+            "type": 1,
+            "dataValue": ""
+        }, {
+            "sort": 3,
+            "column": "需协调工作1",
+            "type": 1,
+            "dataValue": ""
+        }, {
+            "sort": 4,
+            "column": "需协调工作2",
+            "type": 1,
+            "dataValue": ""
+        }, {
+            "sort": 2,
+            "column": "需协调工作3",
+            "type": 1,
+            "dataValue": ""
+        }],
+        "totals": 2
+    };
+    var t = new Array,
+        r = new Array,
+        a = new Array,
+        o = new Array,
+        i = new Array,
+        n = new Array,
+        s = new Array;
+    var l = e.columns,
+        c = e.reports,
+        d = e.totals;
+    r.push('<div class="leftPanel">'+
+                '<div id="leftTop" class="leftTop">'+
+                   '<div class="tableTitle">'+
+                        '<table  border="0" cellpadding="0" cellspacing="0"  class="report_table_list">'+
+                            '<tr>'+
+                                '<td id="sortForName">填报人<!--<img id="nameImg" class="ranking" src="images/sortBtn1.png">--></td>'+
+                            '</tr>'+
+                        '</table>'+
+                    '</div>'+
+                '</div>'),
+    o.push(     '<div class="tableTitle bottom-table-tit">'+
+                        '<table  border="0" cellpadding="0" cellspacing="0"  class="report_table_list">'+
+                        '</table>'+
+                '</div>'+
+            '</div>'), 
+    i.push('<div class="rightPanel">'+
+                '<div class="rightTop" id="rightTop">'+
+                    '<div class="tableTitle">'+
+                        '<table  border="0" cellpadding="0" cellspacing="0" class="report_table_list">'+
+                            '<tr>'+
+                                '<td style="min-width:8.475rem" id="sortForTime">填报时间<!--<img id="timeImg" class="ranking" src="images/sortBtn2.png">--></td>'), 
+    s.push('<div class="rightTop" id="rightBottom">'+
+                '<div class="tableTitle bottom-table-tit">'+
+                    '<table  border="0" cellpadding="0" cellspacing="0" class="report_table_list">'+
+                        '<tr>'+
+                            '<td style="min-width:8.475rem">'+
+                            '</td>');
+    var p = [];
+    // summary.sortNumber = {
+    //     "-2": 0,
+    //     "-1": 0
+    // };
+    for (var m, u, h, g = 2, v = l.length, f = "style='max-width:7.475rem'"; v > g; g++) {
+        //m columns中第三列往后
+        if (m = l[g], u = parseInt(m.type), h = m.column, summary.sortNumber[m.sort] = 0, 2 == u) 
+            v >= 4 ? (i.push("<td class='sortForNumber' data-sort='" + m.sort + "' data-rtype='" + u + "' " + f + ">" +
+                                h + "<img class='ranking' src='images/sortBtn1.png'>" +
+                             "</td>"), 
+                      s.push("<td data-rtype='" + u + "' " + f + "></td>")
+                     ) : 
+                     (i.push("<td class='sortForNumber' data-sort='" + m.sort + "' data-rtype='" + u + "'>" +
+                                h + "<img class='ranking' src='images/sortBtn1.png'>"+
+                             "</td>"), 
+                      s.push("<td data-rtype='" + u + "'></td>"));
+        else if (1 == u) 
+            v >= 4 ? (i.push("<td data-sort='" + m.sort + "' " + f + ">" + h + "</td>"),
+                      s.push("<td  " + f + "></td>")
+                     ) :
+                     (i.push("<td data-sort='" + m.sort + "' " + f + ">" + h + "</td>"),
+                      s.push("<td " + f + "></td>"));
+        else if (3 == u)
+            if (v >= 4) {
+                var w = "<td class='sortForPull' data-sort='" + m.sort + "' " + f + "><select class='select'><option value='' selected='selected' disabled='false'>" + h + "</option>",
+                    y = new Array;
+                y = m.dataValue.split(",");
+                for (var b = 0; b < y.length; b++) w += "<option value='" + y[b] + "'>" + y[b] + "</option>";
+                w += "</select></td>", i.push(w), s.push("<td " + f + "></td>")
+            } else {
+                var w = "<td class='sortForPull' data-sort='" + m.sort + "' " + f + "><select class='select'><option value='' selected='selected' disabled='false'>" + h + "</option>",
+                    y = new Array;
+                y = m.dataValue.split(",");
+                for (var b = 0; b < y.length; b++) w += "<option value='" + y[b] + "'>" + y[b] + "</option>";
+                w += "</select></td>", i.push(w), s.push("<td " + f + "></td>")
+            }
+        else v >= 4 ? (i.push("<td class='sortForDate' data-sort='" + m.sort + "' " + f + ">" + h + "<img class='ranking' src='images/sortBtn1.png'></td>"), s.push("<td  " + f + "></td>")) : (i.push("<td class='sortForDate' data-sort='" + m.sort + "' " + f + ">" + h + "<img class='ranking' src='images/sortBtn1.png'></td>"), s.push("<td " + f + "></td>"));
+        p.push(m.sort)
+    }
+    i.push("</tr></table></div></div>");
+    s.push("</tr></table></div></div>");
+    summary.createTable(c, a, n, p, d);
+    s.push("</div>");
+    t.push('<div class="container clearfix">');
+    t.push(r.join(""));
+    t.push(a.join(""));
+    t.push(o.join(""));
+    t.push(i.join(""));
+    t.push(n.join(""));
+    t.push("</div>");
+    $(".r_table_fix").html(t.join(""));
+    $(document).ready(function() {
+            $(".wrap").on("touchstart", "#leftContent", function(e) {
+                var t = e.originalEvent.targetTouches[0];
+                MoveXY.pointX = t.pageX;
+                MoveXY.pointY = t.pageY;
+                MoveXY.scrollTop = $(window).scrollTop();
+                MoveXY.oscrollTop = document.getElementById("leftContent").scrollTop;
+                MoveXY.oscrollLeft = document.getElementById("leftContent").scrollLeft;
+                e.stopPropagation();
+            }).on("touchmove", "#leftContent", function(e) {
+                e.preventDefault();
+                var t = e.originalEvent.targetTouches[0],
+                    r = t.pageX - MoveXY.pointX,
+                    a = t.pageY - MoveXY.pointY;
+                Math.abs(r), Math.abs(a);
+                MoveXY.distX = r, MoveXY.distY = a;
+                var o = MoveXY.oscrollTop - a;
+                0 > o && (o = 0);
+                document.getElementById("rightContent").scrollTop = o;
+                document.getElementById("leftContent").scrollTop = o;
+                e.stopPropagation()
+            }).on("touchstart", "#rightContent", function(e) {
+                var t = e.originalEvent.targetTouches[0];
+                MoveXY.pointX = t.pageX;
+                MoveXY.pointY = t.pageY;
+                MoveXY.scrollTop = $(window).scrollTop();
+                MoveXY.oscrollTop = document.getElementById("rightContent").scrollTop;
+                MoveXY.oscrollLeft = document.getElementById("rightContent").scrollLeft;
+                e.stopPropagation()
+            }).on("touchmove", "#rightContent", function(e) {
+                e.preventDefault();
+                var t = e.originalEvent.targetTouches[0],
+                    r = t.pageX - MoveXY.pointX,
+                    a = t.pageY - MoveXY.pointY;
+                Math.abs(r), Math.abs(a);
+                MoveXY.distX = r, MoveXY.distY = a;
+                var o = MoveXY.oscrollLeft - r,
+                    i = MoveXY.oscrollTop - a;
+                0 > i && (i = 0);
+                0 > o && (o = 0);
+                document.getElementById("leftContent").scrollTop = document.getElementById("rightContent").scrollTop = i;
+                document.getElementById("rightTop").scrollLeft = document.getElementById("rightContent").scrollLeft = o;
+                e.stopPropagation()
+            });
+            summary.afterCreateTable(l)
+    });
+    </script>
+</body>
+
+</html>
